@@ -1,0 +1,14 @@
+CREATE TABLE `tutors` (
+  `TUTOR_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `NAME` varchar(50) DEFAULT NULL,
+  `EMAIL` varchar(50) DEFAULT NULL,
+  `PHONE` varchar(50) DEFAULT NULL,
+  `ADDR_ID` int(11) DEFAULT NULL,
+  PRIMARY KEY (`TUTOR_ID`),
+  KEY `ADDR_ID` (`ADDR_ID`),
+  CONSTRAINT `ADDR_ID` FOREIGN KEY (`ADDR_ID`) REFERENCES `addresses` (`ADDR_ID`) ON DELETE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+INSERT INTO `tutors` VALUES (1, 'John', 'john@gmail.com', '123-456-7890', 1);
+INSERT INTO `tutors` VALUES (2, 'Ying', 'ying@gmail.com', '111-222-3333', 2);
+INSERT INTO `tutors` VALUES (3, 'Sara', 'jack@gmail.com', NULL, NULL);
