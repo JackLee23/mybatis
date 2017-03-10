@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.mybatis3.mappers.StudentMapper">
+    <resultMap type="Student" id="StudentWithAddressResult">
+        <id property="studId" column="stud_id" />
+        <result property="name" column="name" />
+        <result property="email" column="email" />
+        <result property="phone" column="phone" />
+        <result property="address.addrId" column="addr_id" />
+        <result property="address.street" column="street" />
+        <result property="address.city" column="city" />
+        <result property="address.state" column="state" />
+        <result property="address.zip" column="zip" />
+        <result property="address.country" column="country" />
+    </resultMap>
+
+    <resultMap id="StudentResult" type="Student">
+        <id property="studId" column="stud_id" />
+        <result property="name" column="name" />
+        <result property="email" column="email" />
+        <result property="phone" column="phone" />
+    </resultMap>
+
+    <select id="findAllStudents" resultMap="StudentResult">
+        SELECT * FROM STUDENT
+    </select>
+    <select id="findStudentById" parameterType="int" resultType="Student">
+        SELECT STUD_ID AS STUDID, NAME, EMAIL, DOB FROM STUDENTS WHERE STUD_ID=#{Id}
+    </select>
+    <!--
+    <insert id="insertStudent" parameterType="Student">
+        INSERT INTO STUDENTS(STUD_ID,NAME,EMAIL,DOB) VALUES(#{studId },#{name},#{email},#{dob})
+    </insert>
+    -->
+
+    <select id="selectStudentWithAddress" parameterType="int" resultMap="StudentWithAddressResult">
+        SELECT STUD_ID, NAME, EMAIL, PHONE, A.ADDR_ID, STREET, CITY, STATE, ZIP, COUNTRY
+        FROM STUDENT S LEFT OUTER JOIN ADDRESSES A ON S.ADDR_ID=A.ADDR_ID
+        WHERE STUD_ID=#{studId}
+    </select>
+    <update id="updateStudent" parameterType="Student">
+        update student
+        <set>
+            <if test="name != null">name=#{name},</if>
+            <if test="email != null">email=#{email},</if>
+            <if test="phone != null">phone=#{phone},</if>
+        </set>
+        where stud_id=#{studId}
+    </update>
+
+    <insert id="insertStudent" parameterType="Student" useGeneratedKeys="true" keyProperty="studId">
+        insert into student(name,email,addr_id, phone,gender) values(#{name},#{email},#{address.addrId},#{phone},#{gender})
+    </insert>
+
+    <select id="findAllStudentsByNameEmail" resultMap="StudentResult">
+        select stud_id, name,email, phone from Student where name=#{param1} and email=#{param2}
+    </select>
+
+    <select id="findAllStudentsWithMap" resultMap="StudentResult">
+        select * from Student
+    </select>
+
+    <!--<select id="findAllStudentsWithRowBounds" resultMap="StudentResult">
+        select * from Students
+    </select>-->
+</mapper>

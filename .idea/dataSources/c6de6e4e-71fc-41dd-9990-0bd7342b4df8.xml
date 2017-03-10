@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="mybatis@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="mybatis">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="sakila"/>
+    <schema id="7" parent="1" name="sampledb"/>
+    <schema id="8" parent="1" name="sys"/>
+    <schema id="9" parent="1" name="world"/>
+    <table id="10" parent="2" name="addresses"/>
+    <table id="11" parent="2" name="courses"/>
+    <table id="12" parent="2" name="student"/>
+    <table id="13" parent="2" name="students"/>
+    <table id="14" parent="2" name="tutors"/>
+    <table id="15" parent="2" name="user_pics"/>
+    <column id="16" parent="10" name="ADDR_ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="17" parent="10" name="STREET">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="18" parent="10" name="CITY">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="19" parent="10" name="STATE">
+      <Position>4</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="20" parent="10" name="ZIP">
+      <Position>5</Position>
+      <DataType>int(10)|0</DataType>
+    </column>
+    <column id="21" parent="10" name="COUNTRY">
+      <Position>6</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <key id="22" parent="10" name="PRIMARY">
+      <ColNames>ADDR_ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="23" parent="11" name="COURSE_ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="24" parent="11" name="NAME">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="25" parent="11" name="DESCRIPTION">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="26" parent="11" name="START_DATE">
+      <Position>4</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="27" parent="11" name="END_DATE">
+      <Position>5</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="28" parent="11" name="TUTOR_ID">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="29" parent="11" name="TUTOR_ID">
+      <ColNames>TUTOR_ID</ColNames>
+    </index>
+    <key id="30" parent="11" name="PRIMARY">
+      <ColNames>COURSE_ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="31" parent="12" name="STUD_ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="32" parent="12" name="NAME">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="33" parent="12" name="EMAIL">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="34" parent="12" name="PHONE">
+      <Position>4</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="35" parent="12" name="ADDR_ID">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="36" parent="12" name="GENDER">
+      <Position>6</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <index id="37" parent="12" name="ADD_ID">
+      <ColNames>ADDR_ID</ColNames>
+    </index>
+    <key id="38" parent="12" name="PRIMARY">
+      <ColNames>STUD_ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="39" parent="12" name="ADD_ID">
+      <ColNames>ADDR_ID</ColNames>
+      <RefSchemaName>mybatis</RefSchemaName>
+      <RefTableName>addresses</RefTableName>
+      <RefColNames>ADDR_ID</RefColNames>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+    <column id="40" parent="13" name="stud_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="41" parent="13" name="NAME">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="42" parent="13" name="email">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="43" parent="13" name="dob">
+      <Position>4</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <key id="44" parent="13" name="PRIMARY">
+      <ColNames>stud_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="45" parent="14" name="TUTOR_ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="46" parent="14" name="NAME">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="47" parent="14" name="EMAIL">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="48" parent="14" name="PHONE">
+      <Position>4</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="49" parent="14" name="ADDR_ID">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="50" parent="14" name="ADDR_ID">
+      <ColNames>ADDR_ID</ColNames>
+    </index>
+    <key id="51" parent="14" name="PRIMARY">
+      <ColNames>TUTOR_ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="52" parent="14" name="ADDR_ID">
+      <ColNames>ADDR_ID</ColNames>
+      <RefSchemaName>mybatis</RefSchemaName>
+      <RefTableName>addresses</RefTableName>
+      <RefColNames>ADDR_ID</RefColNames>
+      <OnDelete>no-action</OnDelete>
+    </foreign-key>
+    <column id="53" parent="15" name="ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="54" parent="15" name="NAME">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="55" parent="15" name="PIC">
+      <Position>3</Position>
+      <DataType>mediumblob|0</DataType>
+    </column>
+    <column id="56" parent="15" name="BIO">
+      <Position>4</Position>
+      <DataType>longtext|0</DataType>
+    </column>
+    <key id="57" parent="15" name="PRIMARY">
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

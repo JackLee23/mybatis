@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="applications.properties"/>
+
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING" />
+    </settings>
+    <!--打印查询语句-->
+    <typeAliases>
+        <typeAlias type="com.mybatis3.domain.Student" alias="Student" />
+        <!--
+        <typeAlias type="com.mybatis3.domain.Course" alias="Course"/>
+        <typeAlias type="com.mybatis3.domain.Tutor" alias="Tutor"/>
+        <typeAlias type="com.mybatis3.domain.UserPic" alias="UserPic"/>
+        -->
+    </typeAliases>
+
+    <typeHandlers>
+        <typeHandler handler="com.mybatis3.typehandlers.PhoneTypeHandler" />
+        <!--
+        <typeHandler
+                handler="org.apache.ibatis.type.EnumOrdinalTypeHandler"
+                javaType="com.mybatis3.domain.Gender"/>
+                -->
+    </typeHandlers>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driverClassName}" />
+                <property name="url" value="${jdbc.url}" />
+                <property name="username" value="${jdbc.username}" />
+                <property name="password" value="${jdbc.password}" />
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="com/mybatis3/mappers/StudentMapper.xml" />
+        <mapper resource="com/mybatis3/mappers/TutorMapper.xml" />
+        <!--<mapper resource="com/mybatis3/mappers/CourseMapper.xml"/>
+        <mapper resource="com/mybatis3/mappers/UserPicMapper.xml"/>-->
+    </mappers>
+</configuration>
