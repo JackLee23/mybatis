@@ -1,0 +1,14 @@
+CREATE TABLE `courses` (
+  `COURSE_ID` int(11) NOT NULL,
+  `NAME` varchar(50) DEFAULT NULL,
+  `DESCRIPTION` varchar(50) DEFAULT NULL,
+  `START_DATE` date DEFAULT NULL,
+  `END_DATE` date DEFAULT NULL,
+  `TUTOR_ID` int(11) DEFAULT NULL,
+  PRIMARY KEY (`COURSE_ID`),
+  KEY `TUTOR_ID` (`TUTOR_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `courses` VALUES (1, 'JavaSE', 'Java SE', '2017-2-28', '2017-3-30', 1);
+INSERT INTO `courses` VALUES (2, 'JavaEE', 'Java EE 6', '2017-2-28', '2017-3-30', 2);
+INSERT INTO `courses` VALUES (3, 'MyBatis', 'MyBatis', '2017-2-28', '2017-3-30', 2);
